@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Toy Store Tripoly | عالم الألعاب يصل إلى باب منزلك | Le monde des jouets, livré chez vous</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Inter:wght@400;500;600;700;800;900&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ['Tajawal', 'Inter', 'sans-serif'],
+        display: ['Fredoka', 'Tajawal', 'sans-serif']
+      },
+      colors: {
+        brand: '#E30613',
+        brandDark: '#B8050F',
+        navy: '#111D2F',
+        navyLight: '#1e2e4a',
+        paper: '#F5F5F0',
+        accentYellow: '#FFEB00'
+      }
+    }
+  }
+}
+</script>
+<style>
+  * { scrollbar-width: thin; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  .hero-dot.active { background: #E30613 !important; width: 26px; }
+  .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .product-card:hover .add-cart { transform: translateY(0); opacity: 1; }
+  .add-cart { transform: translateY(8px); opacity: 0; transition: all 0.25s ease; }
+  .toast { animation: slideInStart 0.35s ease; }
+  @keyframes slideInStart { from { transform: translateX(-120%); } to { transform: translateX(0); } }
+  .fade-in { animation: fadeIn 0.25s ease; }
+  @keyframes fadeIn { from { opacity: 0; transform: scale(0.97); } to { opacity: 1; transform: scale(1); } }
+  .lang-btn.active { background: #E30613; color: #fff; }
+  .hero-slide { min-width: 100%; }
+</style>
+</head>
+<body class="bg-[#efefef] text-[#111] font-sans antialiased selection:bg-brand selection:text-white">
+
+<!-- TOP UTILITY BAR -->
+<div class="bg-[#f2f2f2] border-b border-[#ddd] text-[11px] hidden lg:block">
+  <div class="max-w-[1420px] mx-auto flex items-center justify-between px-4 h-[34px]">
+    <div class="flex items-center gap-5">
+      <button id="rayonsBtn" class="flex items-center gap-2 font-bold uppercase tracking-wide bg-white border border-[#ddd] px-3 py-[4px] rounded shadow-sm hover:border-brand transition">
+        <i class="fa-solid fa-bars text-brand"></i>
+        <span data-i18n="allCategories">جميع الأقسام</span>
+        <i class="fa-solid fa-chevron-down text-[9px] opacity-60"></i>
+      </button>
+      <div class="flex items-center gap-4 text-[#555] font-medium text-[12px]">
+        <span class="inline-flex items-center gap-1.5 text-brand font-bold bg-red-50 px-2 py-0.5 rounded border border-red-200">
+          <i class="fa-solid fa-hand-holding-dollar"></i>
+          <span data-i18n="codBadge">الدفع عند الاستلام فقط</span>
+        </span>
+        <a href="#legoSection" class="hover:text-brand transition" data-i18n="navLego">ألعاب ليغو</a>
+        <a href="#dollsSection" class="hover:text-brand transition" data-i18n="navDolls">دمى باربي</a>
+        <a href="#outdoorSection" class="hover:text-brand transition" data-i18n="navOutdoor">ألعاب الركوب والخارج</a>
+        <a href="#magasins" class="hover:text-brand transition" data-i18n="navShowrooms">فروعنا في طرابلس</a>
+        <a href="#contact" class="hover:text-brand transition" data-i18n="navContact">اتصل بنا</a>
+      </div>
+    </div>
+    <div class="flex items-center gap-4 text-[#444]">
+      <div class="hidden xl:flex items-center gap-1.5 text-xs text-gray-500 italic font-medium">
+        <i class="fa-solid fa-sparkles text-amber-500 text-[10px]"></i>
+        <span>Le monde des jouets, livré chez vous</span>
+      </div>
+      <!-- Language Switcher -->
+      <div class="flex items-center bg-white border border-gray-300 rounded overflow-hidden text-xs" role="group" aria-label="Language">
+        <button id="langAr" class="lang-btn px-2.5 py-1 font-bold transition" data-lang="ar">العربية</button>
+        <button id="langEn" class="lang-btn px-2.5 py-1 font-semibold text-gray-600 hover:text-brand transition" data-lang="en">English</button>
+      </div>
+      <div class="flex items-center gap-2 text-navy font-bold">
+        <i class="fa-solid fa-phone text-brand text-[12px]"></i>
+        <span dir="ltr">+218 91 360 0000</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ANNOUNCEMENT RED BANNER -->
+<div class="bg-brand text-white relative z-20 shadow-sm">
+  <div class="max-w-[1420px] mx-auto px-3 lg:px-4 h-[42px] flex items-center justify-between">
+    <div class="flex items-center gap-2.5 font-black text-[13px] md:text-[18px] lg:text-[20px] tracking-tight leading-none">
+      <span class="bg-accentYellow text-black px-2 py-0.5 text-xs font-black rounded uppercase tracking-wider" data-i18n="cityBadge">ليبيا • طرابلس</span>
+      <span class="font-display tracking-wide uppercase">TOY STORE TRIPOLY</span>
+      <span class="hidden md:inline font-normal text-xs lg:text-sm opacity-95">— <span data-i18n="mainSlogan">عالم الألعاب يصل إلى باب منزلك</span> <span class="opacity-80">• Le monde des jouets, livré chez vous</span></span>
+    </div>
+    <a href="#magasins" class="bg-black hover:bg-zinc-800 text-white text-[11px] lg:text-[12px] font-bold px-3 lg:px-4 py-1.5 rounded-full transition flex items-center gap-1.5">
+      <span data-i18n="visitBranch">فروع طرابلس</span>
+      <i class="fa-solid fa-arrow-left text-[10px]"></i>
+    </a>
+  </div>
+</div>
+
+<!-- MAIN HEADER -->
+<header class="bg-navy text-white sticky top-0 z-30 shadow-xl border-b border-navyLight">
+  <div class="max-w-[1420px] mx-auto px-3 lg:px-4 h-[62px] lg:h-[72px] flex items-center gap-3 lg:gap-6">
+    <a href="#" class="flex items-center gap-2.5 shrink-0 group">
+      <div class="bg-brand text-white px-2.5 py-1.5 lg:px-3.5 lg:py-2 rounded font-black text-[19px] lg:text-[25px] tracking-tighter leading-none shadow group-hover:scale-105 transition-transform flex flex-col items-center">
+        <span>TOY</span>
+        <span class="text-[10px] tracking-widest text-accentYellow uppercase -mt-0.5 font-bold">TRIPOLY</span>
+      </div>
+      <div class="hidden sm:block leading-tight">
+        <div class="font-display font-bold text-sm lg:text-base text-white tracking-wide">TOY STORE TRIPOLY</div>
+        <div class="text-[10px] text-accentYellow font-medium" data-i18n="sloganSub">عالم الألعاب يصل إلى باب منزلك</div>
+      </div>
+    </a>
+
+    <!-- SEARCH -->
+    <div class="flex-1 relative max-w-[680px]">
+      <div class="flex bg-white rounded-md overflow-hidden h-[40px] lg:h-[44px] shadow-inner focus-within:ring-2 focus-within:ring-brand">
+        <input id="searchInput" type="text" autocomplete="off" data-i18n-placeholder="searchPlaceholder" placeholder="ابحث عن ألعاب ليغو، باربي، دراجات، سيارات أطفال..." class="flex-1 px-3 lg:px-4 text-[13px] text-black outline-none placeholder:text-gray-400 bg-transparent">
+        <button id="searchBtn" class="bg-brand hover:bg-brandDark w-[46px] lg:w-[54px] flex items-center justify-center text-white transition text-sm" aria-label="search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </div>
+      <div id="searchSuggest" class="hidden absolute top-full mt-1.5 w-full bg-white rounded-lg shadow-2xl border text-black text-[13px] p-2 z-50 max-h-[320px] overflow-auto"></div>
+    </div>
+
+    <div class="flex items-center gap-2 lg:gap-4 shrink-0">
+      <div class="hidden xl:flex items-center gap-2.5 text-[12px] leading-tight bg-navyLight/60 px-3 py-1.5 rounded-lg border border-white/10">
+        <i class="fa-solid fa-headset text-[22px] text-amber-400"></i>
+        <div>
+          <div class="opacity-75 text-[10px]" data-i18n="needHelp">خدمة الزبائن بطرابلس</div>
+          <div class="font-bold text-[13px] text-white" dir="ltr">+218 91 360 0000</div>
+        </div>
+      </div>
+      <div class="hidden md:flex items-center gap-1.5 bg-yellow-400/20 text-yellow-300 border border-yellow-400/30 px-2.5 py-1 rounded text-xs font-semibold">
+        <i class="fa-solid fa-money-bill-wave"></i>
+        <span data-i18n="codShort">دفع كاش بالاستلام</span>
+      </div>
+      <button id="cartBtn" class="relative bg-white text-navy hover:bg-yellow-300 rounded lg:rounded-md px-3 lg:px-4 h-[40px] lg:h-[44px] flex items-center justify-center gap-2.5 font-bold transition shadow">
+        <i class="fa-solid fa-cart-shopping text-brand text-base"></i>
+        <span class="hidden lg:block text-[13px]" data-i18n="cartLabel">السلة</span>
+        <span id="cartCount" class="bg-brand text-white text-[11px] font-black w-[20px] h-[20px] rounded-full flex items-center justify-center shadow">0</span>
+      </button>
+      <button id="mobileLangBtn" class="lg:hidden text-xs bg-navyLight border border-white/20 px-2.5 py-2 rounded font-bold text-yellow-300">EN / ع</button>
+      <button id="mobileMenu" class="lg:hidden w-[40px] h-[40px] bg-navyLight hover:bg-navyLight/80 rounded flex items-center justify-center text-white text-lg" aria-label="menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- MOBILE DRAWER -->
+<div id="drawer" class="fixed inset-0 z-[60] hidden">
+  <div id="drawerBg" class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+  <div class="absolute inset-y-0 start-0 w-[84%] max-w-[320px] bg-white p-5 overflow-auto shadow-2xl flex flex-col justify-between">
+    <div>
+      <div class="flex justify-between items-center pb-4 border-b">
+        <div class="font-black text-lg text-brand flex items-center gap-2">
+          <span class="bg-brand text-white px-2 py-0.5 rounded text-sm">TRIPOLY</span>
+          <span data-i18n="menuTitle">أقسام الألعاب</span>
+        </div>
+        <button id="closeDrawer" class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-700"><i class="fa-solid fa-xmark text-lg"></i></button>
+      </div>
+      <div class="my-4 p-3 bg-red-50 rounded border border-red-200 text-xs text-brand font-medium">
+        <i class="fa-solid fa-truck-fast"></i>
+        <strong data-i18n="mainSlogan">عالم الألعاب يصل إلى باب منزلك</strong>
+        <div class="text-[11px] italic text-gray-700 mt-1">Le monde des jouets, livré chez vous</div>
+      </div>
+      <nav class="space-y-1 text-[14px] font-semibold text-gray-800">
+        <a href="#legoSection" class="drawer-link flex justify-between items-center p-3 hover:bg-gray-50 rounded border-b border-gray-100"><span><i class="fa-solid fa-cubes text-brand ml-2"></i><span data-i18n="drawerLego">ليغو ومجسمات تركيب</span></span><i class="fa-solid fa-chevron-left text-xs text-gray-400"></i></a>
+        <a href="#dollsSection" class="drawer-link flex justify-between items-center p-3 hover:bg-gray-50 rounded border-b border-gray-100"><span><i class="fa-solid fa-child-dress text-pink-500 ml-2"></i><span data-i18n="drawerDolls">دمى باربي وإكسسوارات</span></span><i class="fa-solid fa-chevron-left text-xs text-gray-400"></i></a>
+        <a href="#outdoorSection" class="drawer-link flex justify-between items-center p-3 hover:bg-gray-50 rounded border-b border-gray-100"><span><i class="fa-solid fa-bicycle text-blue-500 ml-2"></i><span data-i18n="drawerOutdoor">دراجات وسكوترات خارجية</span></span><i class="fa-solid fa-chevron-left text-xs text-gray-400"></i></a>
+        <a href="#boardSection" class="drawer-link flex justify-between items-center p-3 hover:bg-gray-50 rounded border-b border-gray-100"><span><i class="fa-solid fa-dice text-purple-500 ml-2"></i><span data-i18n="drawerBoard">ألعاب ذكاء وتحديات</span></span><i class="fa-solid fa-chevron-left text-xs text-gray-400"></i></a>
+        <a href="#magasins" class="drawer-link flex justify-between items-center p-3 hover:bg-gray-50 rounded border-b border-gray-100"><span><i class="fa-solid fa-store text-emerald-600 ml-2"></i><span data-i18n="drawerShowrooms">فروعنا في طرابلس</span></span><i class="fa-solid fa-chevron-left text-xs text-gray-400"></i></a>
+      </nav>
+    </div>
+    <div class="pt-4 border-t space-y-3">
+      <div class="flex items-center justify-between">
+        <span class="text-xs font-bold text-gray-600">Language / اللغة:</span>
+        <div class="flex gap-1">
+          <button data-lang-btn="ar" class="drawer-lang px-3 py-1 text-xs font-bold rounded">العربية</button>
+          <button data-lang-btn="en" class="drawer-lang px-3 py-1 text-xs font-bold rounded">English</button>
+        </div>
+      </div>
+      <div class="text-[11px] text-gray-500 text-center">Toy Store Tripoly • طرابلس - ليبيا</div>
+    </div>
+  </div>
+</div>
+
+<main class="max-w-[1420px] mx-auto bg-white lg:shadow-md">
+
+  <!-- HERO SLIDER -->
+  <div class="relative overflow-hidden bg-[#0b1220] group">
+    <div id="heroTrack" class="flex transition-transform duration-700 ease-out will-change-transform">
+
+      <!-- Slide 1 -->
+      <div class="hero-slide relative h-[260px] md:h-[400px] lg:h-[460px] flex">
+        <div class="absolute inset-0 bg-gradient-to-l from-[#0b1220] via-[#0b1220]/75 to-transparent z-[1]"></div>
+        <img src="https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?q=80&w=1400&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover opacity-85" alt="LEGO Store Tripoli">
+        <div class="relative z-[2] p-6 md:p-12 lg:p-16 flex flex-col justify-center max-w-[650px] text-white">
+          <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur border border-white/20 text-[11px] md:text-xs px-3.5 py-1.5 rounded-full mb-3 w-fit">
+            <span class="text-accentYellow font-black">LEGO® 2025</span><span>•</span><span data-i18n="heroBadge1">تشكيلة أصلية حصرية في طرابلس</span>
+          </div>
+          <h1 class="font-display text-[26px] md:text-[44px] lg:text-[54px] leading-[1.05] font-black uppercase text-white">
+            <span data-i18n="heroTitle1a">ابنِ خيالك مع</span><br>
+            <span class="text-accentYellow" data-i18n="heroTitle1b">أقوى تشكيلات LEGO</span>
+          </h1>
+          <p class="text-white/90 text-[13px] md:text-[15px] mt-2.5 leading-relaxed max-w-[480px]" data-i18n="heroDesc1">مجموعات حرب النجوم وسباقات تكنيك ومارفل. توصيل فوري داخل طرابلس مع خدمة الدفع عند الاستلام نقداً.</p>
+          <div class="flex items-center gap-2 mt-4 flex-wrap">
+            <span class="bg-brand text-white text-[11px] font-bold px-3 py-1 rounded" data-i18n="saveTag">تخفيضات حتى -30%</span>
+            <span class="bg-accentYellow text-navy text-[11px] font-black px-3 py-1 rounded" data-i18n="codTagShort">الدفع عند الباب</span>
+          </div>
+          <div class="mt-5 flex gap-3">
+            <a href="#legoSection" class="bg-brand hover:bg-brandDark text-white font-bold text-[13px] px-6 py-2.5 rounded-md transition shadow flex items-center gap-2">
+              <span data-i18n="shopNow">تسوق الآن</span><i class="fa-solid fa-arrow-left text-xs"></i>
+            </a>
+          </div>
+        </div>
+        <div class="hidden md:flex absolute start-[6%] top-1/2 -translate-y-1/2 z-[2] gap-4">
+          <img src="https://images.unsplash.com/photo-1587654780291-39c9404d746b?q=80&w=340&auto=format&fit=crop" class="w-[200px] lg:w-[240px] h-[300px] object-cover rounded-2xl shadow-2xl rotate-3 border-4 border-white/20" alt="Lego Toy">
+          <img src="https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?q=80&w=340&auto=format&fit=crop" class="w-[180px] lg:w-[210px] h-[260px] object-cover rounded-2xl shadow-2xl -rotate-2 mt-10 border-4 border-white/20" alt="Creative Lego">
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="hero-slide relative h-[260px] md:h-[400px] lg:h-[460px] flex bg-[#FFE5E8]">
+        <img src="https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?q=80&w=1400&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover" alt="Barbie Collection">
+        <div class="absolute inset-0 bg-gradient-to-l from-pink-950/80 via-pink-900/50 to-transparent z-[1]"></div>
+        <div class="relative z-[2] p-6 md:p-14 flex flex-col justify-center text-white max-w-[580px]">
+          <span class="bg-pink-600 text-white text-[12px] font-black px-3.5 py-1 rounded-full w-fit shadow mb-3" data-i18n="heroBadge2">باربي ومنازل الأحلام • خصم حتى 25%</span>
+          <h2 class="font-display text-[28px] md:text-[50px] leading-[1.05] font-black uppercase">
+            <span data-i18n="heroTitle2a">بيت الأحلام باربي</span><br>
+            <span class="text-pink-300">BARBIE DREAMHOUSE</span>
+          </h2>
+          <p class="text-white/90 text-sm mt-3" data-i18n="heroDesc2">أكبر تشكيلة من دمى باربي الأصلية، دمى لول سيربرايز، ومجسمات ديزني مع توصيل سريع في طرابلس.</p>
+          <div class="mt-6 flex items-center gap-3">
+            <a href="#dollsSection" class="bg-black hover:bg-zinc-800 text-white font-bold text-[13px] px-6 py-2.5 rounded-md transition shadow flex items-center gap-2">
+              <span data-i18n="discoverDolls">اكتشف المجموعة</span><i class="fa-solid fa-arrow-left text-xs"></i>
+            </a>
+            <span class="text-xs bg-white text-pink-700 font-bold px-3 py-2 rounded" data-i18n="codTagShort2">الدفع عند الاستلام</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="hero-slide relative h-[260px] md:h-[400px] lg:h-[460px] flex bg-[#D1F0FF]">
+        <img src="https://images.unsplash.com/photo-1558060370-d644479cb6f7?q=80&w=1400&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover" alt="Outdoor Scooters Tripoli">
+        <div class="absolute inset-0 bg-gradient-to-l from-slate-900/90 via-slate-900/60 to-transparent z-[1]"></div>
+        <div class="relative z-[2] p-6 md:p-14 flex flex-col justify-center text-white max-w-[600px]">
+          <span class="bg-amber-400 text-black text-[12px] font-black px-3 py-1 rounded w-fit mb-3" data-i18n="heroBadge3">أنشطة الهواء الطلق والمرح</span>
+          <h2 class="font-display text-[26px] md:text-[48px] leading-[1.05] font-black uppercase text-white">
+            <span data-i18n="heroTitle3a">سكوترات ودراجات الأطفال</span><br>
+            <span class="text-accentYellow" data-i18n="heroTitle3b">أمان تام ومتعة بلا حدود</span>
+          </h2>
+          <p class="text-white/80 text-sm mt-3" data-i18n="heroDesc3">سيارات كهربائية، سكوترات قابلة للطي، وخوذات أمان. اطلبها الآن وتصلك لباب بيتك في طرابلس بدون دفع مسبق!</p>
+          <div class="mt-6">
+            <a href="#outdoorSection" class="bg-brand hover:bg-brandDark text-white font-bold text-[13px] px-6 py-2.5 rounded-md transition shadow inline-flex items-center gap-2">
+              <span data-i18n="shopOutdoor">شاهد ألعاب الخارج</span><i class="fa-solid fa-arrow-left text-xs"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button id="prevHero" class="absolute start-3 md:start-6 top-1/2 -translate-y-1/2 z-10 w-[36px] h-[36px] md:w-[44px] md:h-[44px] bg-white/90 hover:bg-white text-navy rounded-full flex items-center justify-center shadow-lg transition" aria-label="previous"><i class="fa-solid fa-chevron-right text-sm"></i></button>
+    <button id="nextHero" class="absolute end-3 md:end-6 top-1/2 -translate-y-1/2 z-10 w-[36px] h-[36px] md:w-[44px] md:h-[44px] bg-white/90 hover:bg-white text-navy rounded-full flex items-center justify-center shadow-lg transition" aria-label="next"><i class="fa-solid fa-chevron-left text-sm"></i></button>
+
+    <div class="absolute bottom-4 start-1/2 -translate-x-1/2 z-10 flex gap-2">
+      <button class="hero-dot active w-[24px] h-[7px] rounded-full bg-white/60 transition-all"></button>
+      <button class="hero-dot w-[7px] h-[7px] rounded-full bg-white/60 transition-all"></button>
+      <button class="hero-dot w-[7px] h-[7px] rounded-full bg-white/60 transition-all"></button>
+    </div>
+  </div>
+
+  <!-- VALUE PROPOSITIONS -->
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-2 p-3 bg-white border-b text-[12px]">
+    <div class="flex items-center gap-3 p-2 bg-[#fafafa] rounded border border-gray-100">
+      <div class="w-10 h-10 rounded-full bg-red-100 text-brand flex items-center justify-center text-lg shrink-0"><i class="fa-solid fa-hand-holding-dollar"></i></div>
+      <div><div class="font-bold text-navy" data-i18n="propCod">الدفع عند الاستلام</div><div class="text-[10px] text-gray-500" data-i18n="propCodSub">ادفع نقداً عند استلام طلبيتك</div></div>
+    </div>
+    <div class="flex items-center gap-3 p-2 bg-[#fafafa] rounded border border-gray-100">
+      <div class="w-10 h-10 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center text-lg shrink-0"><i class="fa-solid fa-truck-fast"></i></div>
+      <div><div class="font-bold text-navy" data-i18n="propDelivery">توصيل سريع بطرابلس</div><div class="text-[10px] text-gray-500" data-i18n="propDeliverySub">خلال 24-48 ساعة لباب منزلك</div></div>
+    </div>
+    <div class="flex items-center gap-3 p-2 bg-[#fafafa] rounded border border-gray-100">
+      <div class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-lg shrink-0"><i class="fa-solid fa-certificate"></i></div>
+      <div><div class="font-bold text-navy" data-i18n="propQuality">ألعاب أصلية ومعتمدة</div><div class="text-[10px] text-gray-500" data-i18n="propQualitySub">مطابقة لمعايير السلامة الدولية</div></div>
+    </div>
+    <div class="flex items-center gap-3 p-2 bg-[#fafafa] rounded border border-gray-100">
+      <div class="w-10 h-10 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center text-lg shrink-0"><i class="fa-solid fa-location-dot"></i></div>
+      <div><div class="font-bold text-navy" data-i18n="propShowrooms">فروع متعددة بطرابلس</div><div class="text-[10px] text-gray-500" data-i18n="propShowroomsSub">حي الأندلس، قرقارش، الدهماني</div></div>
+    </div>
+  </div>
+
+  <!-- PROMO BANNERS -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-[6px] p-[6px] bg-[#efefef]">
+    <div class="relative bg-brand overflow-hidden h-[180px] lg:h-[200px] flex group cursor-pointer shadow-sm rounded-sm">
+      <div class="p-4 lg:p-6 text-white flex flex-col justify-center w-[60%] z-10">
+        <div class="font-display font-bold text-[20px] lg:text-[22px] leading-tight"><span data-i18n="legoWorld">عالم LEGO</span><br><span class="text-[13px] font-sans font-medium opacity-90" data-i18n="legoBoxesSubtitle">صناديق البناء الإبداعية</span></div>
+        <div class="mt-2 text-[12px]"><span data-i18n="saveUpTo">وفر حتى</span> <span class="bg-accentYellow text-black font-black text-[20px] lg:text-[22px] px-1.5 py-0.5 rounded mx-1">120 LYD</span></div>
+        <span class="mt-3 bg-black text-white text-[11px] font-bold px-3 py-1 rounded w-fit group-hover:bg-zinc-800 transition" data-i18n="exploreBtn">اكتشف العرض</span>
+      </div>
+      <img src="https://images.unsplash.com/photo-1587654780291-39c9404d746b?q=80&w=500&auto=format&fit=crop" class="absolute start-auto end-0 top-0 h-full w-[55%] object-cover mix-blend-screen opacity-90 group-hover:scale-105 transition duration-500" alt="Lego Box">
+    </div>
+    <div class="relative bg-[#f7f7f2] overflow-hidden h-[180px] lg:h-[200px] flex border border-[#e5e5e5] group cursor-pointer shadow-sm rounded-sm">
+      <div class="p-4 lg:p-6 flex flex-col justify-center w-[60%] z-10">
+        <div class="font-bold text-[16px] lg:text-[18px] leading-tight text-navy" data-i18n="poolTitle">المسابح والألعاب المائية</div>
+        <div class="text-brand font-black text-[30px] lg:text-[34px] leading-none mt-1.5">280 <span class="text-[14px]">LYD</span> <span class="text-[14px] line-through text-[#888] font-medium me-2">360 LYD</span></div>
+        <div class="text-[11px] mt-1 text-gray-700"><span data-i18n="giftIncluded">منفاخ كهربائي سريع</span> <span class="bg-accentYellow px-1 font-bold text-black rounded text-[10px]" data-i18n="freeGift">هدية مجانية</span></div>
+        <span class="mt-2 bg-black text-white text-[10px] font-bold px-3 py-1 rounded w-fit group-hover:bg-brand transition" data-i18n="orderCod">اطلب بالدفع عند الاستلام</span>
+      </div>
+      <img src="https://images.unsplash.com/photo-1575429198097-0414ec08e8cd?q=80&w=500&auto=format&fit=crop" class="absolute start-auto end-0 top-0 h-full w-[45%] object-cover group-hover:scale-105 transition duration-500" alt="Water Fun">
+    </div>
+  </div>
+
+  <!-- LARGE BANNER -->
+  <div class="relative h-[150px] lg:h-[190px] overflow-hidden mx-[6px] mb-[6px] bg-[#0f1b2f] flex items-center rounded-sm">
+    <img src="https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?q=80&w=1400&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover opacity-50" alt="Games Store">
+    <div class="relative z-10 flex w-full h-full items-center justify-between px-4 lg:px-10">
+      <div class="text-white">
+        <div class="flex items-center gap-2">
+          <span class="bg-brand text-white text-[10px] font-black px-2.5 py-0.5 rounded uppercase">Tripoli Toy Mega-Store</span>
+          <span class="bg-yellow-400 text-black text-[10px] font-bold px-2 py-0.5 rounded" data-i18n="codBannerShort">الدفع نقداً عند الباب</span>
+        </div>
+        <div class="font-display font-black text-[22px] lg:text-[36px] leading-none mt-2"><span data-i18n="bannerUniverse">عالم ألعاب التركيب والبناء</span><br><span class="text-accentYellow text-lg lg:text-2xl font-sans font-bold" data-i18n="bannerUniverseSub">متعة، تركيز، وتنمية مهارات الأطفال</span></div>
+      </div>
+      <div class="text-center text-white">
+        <div class="text-[12px] opacity-80" data-i18n="discountUpTo">خصم يصل إلى</div>
+        <div class="font-black text-[42px] lg:text-[56px] leading-none text-accentYellow" dir="ltr">-35%</div>
+        <a href="#legoSection" class="bg-white text-black text-[11px] font-bold px-3 py-1 rounded inline-block hover:bg-yellow-300 transition mt-1" data-i18n="viewCatalog">تصفح التشكيلة</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- LEGO SECTION -->
+  <section id="legoSection" class="px-2 lg:px-0">
+    <div class="flex items-center justify-between px-4 py-3 bg-white border-b">
+      <div class="flex items-center gap-2">
+        <span class="w-2.5 h-6 bg-brand rounded-sm"></span>
+        <h3 class="font-bold text-[14px] lg:text-[16px] uppercase tracking-wide text-navy" data-i18n="sectionLego">تشكيلة LEGO® • ستار وورز، تكنيك، وسيتي</h3>
+      </div>
+      <div class="flex gap-2">
+        <button onclick="scrollRow('rowLego', -320)" class="w-7 h-7 border rounded hover:bg-gray-100 flex items-center justify-center transition"><i class="fa-solid fa-chevron-right text-xs"></i></button>
+        <button onclick="scrollRow('rowLego', 320)" class="w-7 h-7 border rounded hover:bg-gray-100 flex items-center justify-center transition"><i class="fa-solid fa-chevron-left text-xs"></i></button>
+      </div>
+    </div>
+    <div id="rowLego" class="flex overflow-x-auto no-scrollbar gap-[6px] p-[6px] bg-[#efefef] scroll-smooth"></div>
+  </section>
+
+  <!-- DOLLS -->
+  <div id="dollsSection" class="relative h-[130px] lg:h-[150px] bg-[#e8e6dc] m-[6px] flex items-center overflow-hidden rounded-sm">
+    <div class="px-5 lg:px-10 w-[46%] z-10">
+      <div class="font-bold text-[14px] lg:text-[20px] leading-tight uppercase text-navy">
+        <span class="text-xs text-pink-600 font-black block mb-0.5" data-i18n="princessWorld">عالم الأميرات والدمى</span>
+        <span data-i18n="dollsBannerTitle">أكبر تشكيلة دمى باربي ولول الأصلية</span>
+      </div>
+      <div class="text-[12px] font-medium text-gray-600 mt-1" data-i18n="codBannerNote">تصلك مع مندوبنا والدفع عند الاستلام</div>
+    </div>
+    <img src="https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?q=80&w=800&auto=format&fit=crop" class="h-full w-[34%] object-cover" alt="Dolls Banner">
+    <div class="flex-1 bg-pink-700 h-full flex flex-col justify-center items-center text-white p-2">
+      <div class="text-[11px] font-bold" data-i18n="discountUpTo">خصم لغاية</div>
+      <div class="font-black text-[34px] lg:text-[46px] leading-none text-accentYellow" dir="ltr">-25%</div>
+      <div class="text-[10px] font-bold uppercase">TOY STORE TRIPOLY</div>
+    </div>
+  </div>
+
+  <section class="px-2 lg:px-0">
+    <div class="flex items-center justify-between px-4 py-2.5 bg-white border-b">
+      <div class="flex items-center gap-2">
+        <span class="w-2.5 h-5 bg-pink-600 rounded-sm"></span>
+        <h3 class="font-bold text-[13px] lg:text-[14px] uppercase text-navy" data-i18n="sectionDolls">مختارات الدمى وعرائس الأطفال</h3>
+      </div>
+      <span class="text-[11px] text-gray-500 font-semibold" data-i18n="codOnlyNote">الدفع كاش عند الباب</span>
+    </div>
+    <div id="rowDolls" class="grid grid-cols-2 md:grid-cols-4 gap-[6px] p-[6px] bg-[#efefef]"></div>
+  </section>
+
+  <!-- FIGURES -->
+  <section class="px-2 lg:px-0">
+    <div class="flex items-center justify-between px-4 py-2 bg-[#b9e8e0] border-b">
+      <h3 class="font-bold text-[12px] lg:text-[13px] uppercase text-teal-950 flex items-center gap-2"><i class="fa-solid fa-mask"></i><span data-i18n="sectionFigures">مجسمات وشخصيات الأكشن • مارفل، بوكيمون، دراغون بول</span></h3>
+      <span class="text-[11px] font-bold text-teal-900 bg-white/70 px-2 py-0.5 rounded" data-i18n="availableTripoli">متوفر في طرابلس</span>
+    </div>
+    <div id="rowFig" class="grid grid-cols-3 md:grid-cols-6 gap-[6px] p-[6px] bg-[#efefef]"></div>
+  </section>
+
+  <!-- OUTDOOR -->
+  <div id="outdoorSection" class="relative bg-[#dbeafe] m-[6px] h-[130px] lg:h-[150px] flex items-center overflow-hidden rounded-sm border">
+    <div class="px-5 lg:px-8 z-10 w-[55%]">
+      <div class="text-[11px] font-bold text-blue-900" data-i18n="specialDeals">تخفيضات خاصة</div>
+      <div class="font-black text-[30px] lg:text-[40px] text-brand leading-none" dir="ltr">-30%</div>
+      <div class="font-bold text-[16px] lg:text-[18px] text-navy leading-none mt-1" data-i18n="outdoorHeading">الدراجات والسكوترات وألعاب الركوب</div>
+      <div class="text-[11px] text-gray-700 mt-1 hidden sm:block" data-i18n="outdoorSub">توصيل لكافة أحياء طرابلس مع الدفع عند الاستلام نقداً</div>
+    </div>
+    <img src="https://images.unsplash.com/photo-1571068316344-75bc76f77890?q=80&w=800&auto=format&fit=crop" class="h-full flex-1 object-cover" alt="Bike Banner">
+  </div>
+
+  <div id="outdoorGrid" class="grid grid-cols-3 md:grid-cols-6 gap-[6px] p-[6px] bg-[#efefef] text-[10px] text-center font-bold">
+    <div class="bg-white border p-2.5 rounded shadow-sm hover:border-brand cursor-pointer transition"><img src="https://images.unsplash.com/photo-1558981403-c5f9899a28bc?q=80&w=100&auto=format&fit=crop" class="w-12 h-12 mx-auto object-cover rounded mb-1" alt="Bike"><span data-i18n="catBike">دراجات بدون عجلات مساعدة</span></div>
+    <div class="bg-white border p-2.5 rounded shadow-sm hover:border-brand cursor-pointer transition"><img src="https://images.unsplash.com/photo-1571068316344-75bc76f77890?q=80&w=100&auto=format&fit=crop" class="w-12 h-12 mx-auto object-cover rounded mb-1" alt="Scooter"><span data-i18n="catScooter">سكوتر كهربائي</span></div>
+    <div class="bg-white border p-2.5 rounded shadow-sm hover:border-brand cursor-pointer transition"><img src="https://images.unsplash.com/photo-1485968579580-b6d095142e6e?q=80&w=100&auto=format&fit=crop" class="w-12 h-12 mx-auto object-cover rounded mb-1" alt="Balance Bike"><span data-i18n="catBalance">دراجات توازن للصغار</span></div>
+    <div class="bg-white border p-2.5 rounded shadow-sm hover:border-brand cursor-pointer transition"><img src="https://images.unsplash.com/photo-1484156818044-c0402b43b4ad?q=80&w=100&auto=format&fit=crop" class="w-12 h-12 mx-auto object-cover rounded mb-1" alt="Kids Car"><span data-i18n="catKidsCar">سيارات ركوب كهربائية</span></div>
+    <div class="bg-white border p-2.5 rounded shadow-sm hover:border-brand cursor-pointer transition"><img src="https://images.unsplash.com/photo-1507035895480-2b3156c31fc8?q=80&w=100&auto=format&fit=crop" class="w-12 h-12 mx-auto object-cover rounded mb-1" alt="Kids Bike"><span data-i18n="catKidsBike">دراجات أطفال 12-16 إنش</span></div>
+    <div class="bg-white border p-2.5 rounded shadow-sm hover:border-brand cursor-pointer transition"><img src="https://images.unsplash.com/photo-1520095972714-909e91b038e5?q=80&w=100&auto=format&fit=crop" class="w-12 h-12 mx-auto object-cover rounded mb-1" alt="Scooter 3 wheels"><span data-i18n="catLightScooter">سكوتر 3 عجلات مضيء</span></div>
+  </div>
+
+  <!-- HOT DEALS -->
+  <section class="px-2 lg:px-0">
+    <div class="flex items-center justify-between px-4 py-3 bg-white border-b">
+      <div class="flex items-center gap-2">
+        <span class="w-2.5 h-6 bg-amber-500 rounded-sm"></span>
+        <h3 class="font-bold text-[14px] lg:text-[16px] uppercase tracking-wide text-navy" data-i18n="sectionHotDeals">أقوى العروض والصفقات • تخفيضات تصل إلى 50%</h3>
+      </div>
+      <div class="flex gap-2">
+        <button onclick="scrollRow('rowAffaires', -320)" class="w-7 h-7 border rounded hover:bg-gray-100 flex items-center justify-center transition"><i class="fa-solid fa-chevron-right text-xs"></i></button>
+        <button onclick="scrollRow('rowAffaires', 320)" class="w-7 h-7 border rounded hover:bg-gray-100 flex items-center justify-center transition"><i class="fa-solid fa-chevron-left text-xs"></i></button>
+      </div>
+    </div>
+    <div id="rowAffaires" class="flex overflow-x-auto no-scrollbar gap-[6px] p-[6px] bg-[#efefef] scroll-smooth"></div>
+  </section>
+
+  <!-- CATEGORIES -->
+  <section id="boardSection" class="px-2 lg:px-0">
+    <div class="flex items-center justify-between px-4 py-3 bg-white border-b">
+      <div class="flex items-center gap-2">
+        <span class="w-2.5 h-6 bg-purple-600 rounded-sm"></span>
+        <h3 class="font-bold text-[14px] lg:text-[16px] uppercase text-navy" data-i18n="sectionCategories">أقسام الألعاب العائلية والتعليمية</h3>
+      </div>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-[6px] p-[6px] bg-[#efefef]">
+      <div class="bg-accentYellow p-3 flex items-end justify-between h-[120px] relative overflow-hidden cursor-pointer hover:brightness-105 rounded shadow-sm">
+        <div><div class="w-11 h-11 bg-white rounded-full flex items-center justify-center text-xl shadow">🎲</div><div class="font-bold text-[12px] mt-2 text-navy" data-i18n="catBoardGames">ألعاب اللوح والذكاء</div></div>
+        <img src="https://images.unsplash.com/photo-1610890716171-6b1bb98ffd09?q=80&w=150&auto=format&fit=crop" class="w-[70px] h-[70px] object-cover rounded" alt="Board games">
+      </div>
+      <div class="bg-[#c8f7c5] p-3 flex items-end justify-between h-[120px] relative overflow-hidden cursor-pointer hover:brightness-105 rounded shadow-sm">
+        <div><div class="w-11 h-11 bg-white rounded-full flex items-center justify-center text-xl shadow">🎮</div><div class="font-bold text-[12px] mt-2 text-navy" data-i18n="catConsoles">أجهزة ألعاب إلكترونية</div></div>
+        <img src="https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?q=80&w=150&auto=format&fit=crop" class="w-[70px] h-[70px] object-cover rounded" alt="Gaming">
+      </div>
+      <div class="bg-[#a8d8ff] p-3 flex items-end justify-between h-[120px] relative overflow-hidden cursor-pointer hover:brightness-105 rounded shadow-sm">
+        <div><div class="w-11 h-11 bg-white rounded-full flex items-center justify-center text-xl shadow">🎨</div><div class="font-bold text-[12px] mt-2 text-navy" data-i18n="catArts">رسم وصلصال وأشغال</div></div>
+        <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=150&auto=format&fit=crop" class="w-[70px] h-[70px] object-cover rounded" alt="Art sets">
+      </div>
+      <div class="bg-[#ffb6e6] p-3 flex items-end justify-between h-[120px] relative overflow-hidden cursor-pointer hover:brightness-105 rounded shadow-sm">
+        <div><div class="w-11 h-11 bg-white rounded-full flex items-center justify-center text-xl shadow">🧸</div><div class="font-bold text-[12px] mt-2 text-navy" data-i18n="catPlush">دمى محشوة وبطانيات</div></div>
+        <img src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?q=80&w=150&auto=format&fit=crop" class="w-[70px] h-[70px] object-cover rounded" alt="Plushies">
+      </div>
+    </div>
+  </section>
+
+  <!-- BESTSELLERS -->
+  <section class="px-2 lg:px-0">
+    <div class="flex items-center justify-between px-4 py-3 bg-white border-b">
+      <div class="flex items-center gap-2">
+        <span class="w-2.5 h-6 bg-brand rounded-sm"></span>
+        <h3 class="font-bold text-[14px] lg:text-[16px] uppercase tracking-wide text-navy" data-i18n="sectionBestsellers">الأكثر مبيعاً هذا الشهر في طرابلس</h3>
+      </div>
+      <div class="flex gap-2">
+        <button onclick="scrollRow('rowBest', -320)" class="w-7 h-7 border rounded hover:bg-gray-100 flex items-center justify-center transition"><i class="fa-solid fa-chevron-right text-xs"></i></button>
+        <button onclick="scrollRow('rowBest', 320)" class="w-7 h-7 border rounded hover:bg-gray-100 flex items-center justify-center transition"><i class="fa-solid fa-chevron-left text-xs"></i></button>
+      </div>
+    </div>
+    <div id="rowBest" class="flex overflow-x-auto no-scrollbar gap-[6px] p-[6px] bg-[#efefef] scroll-smooth"></div>
+  </section>
+
+  <!-- PUZZLES -->
+  <section class="px-2 lg:px-0">
+    <div class="flex items-center justify-between px-4 py-2.5 bg-white border-b">
+      <h3 class="font-bold text-[13px] uppercase text-navy" data-i18n="sectionPuzzles">تشكيلة البازل وألغاز التفكير (100 - 1000 قطعة)</h3>
+      <span class="text-xs text-gray-400">Ravensburger, Janod, Clementoni</span>
+    </div>
+    <div id="rowPuzzle" class="grid grid-cols-2 md:grid-cols-4 gap-[6px] p-[6px] bg-[#efefef]"></div>
+  </section>
+
+  <!-- COD / SERVICE BANNER -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-0 m-[6px] bg-accentYellow border-2 border-black rounded-sm shadow-md overflow-hidden">
+    <div class="p-4 flex items-center gap-3 border-b md:border-b-0 md:border-e-2 border-black">
+      <div>
+        <div class="font-black text-[18px] lg:text-[22px] leading-tight text-black" data-i18n="fastService">خدمة التوصيل السريع</div>
+        <div class="text-xs font-bold text-navy mt-1" data-i18n="deliveryAreas">توصيل لكافة مناطق طرابلس الكبرى</div>
+      </div>
+      <i class="fa-solid fa-truck-fast text-[36px] text-brand ms-auto"></i>
+    </div>
+    <div class="p-4 flex items-center justify-center gap-3 border-b md:border-b-0 md:border-e-2 border-black bg-white">
+      <div class="w-12 h-12 rounded-full border-2 border-black flex items-center justify-center font-black text-[20px] text-brand"><i class="fa-solid fa-hand-holding-dollar"></i></div>
+      <div class="text-[13px] font-bold leading-tight text-navy">
+        <div data-i18n="codBannerText1">الدفع نقداً عند الاستلام فقط</div>
+        <div class="text-[11px] text-gray-500 font-normal" data-i18n="codBannerText2">عاين منتجك أولاً ثم ادفع للمندوب</div>
+      </div>
+    </div>
+    <div class="p-4 flex items-center gap-3 bg-black text-white">
+      <div class="text-[12px] leading-snug flex-1">
+        <div class="font-bold text-accentYellow" data-i18n="instantOrder">خدمة تجهيز الطلب الفوري</div>
+        <div data-i18n="instantOrderText">طلبك يصلك خلال أقل من 24 ساعة، أو استلمه مباشرة من فرعنا!</div>
+      </div>
+      <i class="fa-solid fa-clock text-[30px] text-accentYellow"></i>
+    </div>
+  </div>
+
+  <!-- SHOWROOMS -->
+  <div id="magasins" class="bg-white border-t border-b">
+    <div class="max-w-[1420px] mx-auto px-4 py-8">
+      <div class="text-center mb-6">
+        <span class="text-xs font-bold text-brand uppercase tracking-wider">Showrooms</span>
+        <h2 class="text-xl lg:text-2xl font-black text-navy mt-1" data-i18n="showroomsTitle">فروع Toy Store Tripoly</h2>
+        <p class="text-xs text-gray-500 mt-1" data-i18n="showroomsSubtitle">مرحباً بكم في فروعنا لتجربة أروع الألعاب واختيار هدايا أطفالكم</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="border rounded-lg p-4 bg-[#fafafa] hover:shadow-md transition">
+          <div class="flex items-center gap-3 mb-3">
+            <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?q=80&w=100&auto=format&fit=crop" class="w-12 h-12 rounded-full object-cover border-2 border-brand" alt="Branch">
+            <div><div class="font-black text-sm text-navy" data-i18n="branch1Title">فرع طريق قرقارش</div><div class="text-[11px] text-brand font-bold" data-i18n="branch1Tag">المعرض الرئيسي</div></div>
+          </div>
+          <div class="text-[12px] text-gray-600 space-y-1.5"><div><i class="fa-solid fa-location-dot text-brand ml-1"></i><span data-i18n="branch1Addr">طريق قرقارش، بجانب مجمع الأعمال، طرابلس</span></div><div><i class="fa-solid fa-phone text-gray-400 ml-1"></i><span dir="ltr">+218 91 360 0001</span></div></div>
+        </div>
+        <div class="border rounded-lg p-4 bg-[#fafafa] hover:shadow-md transition">
+          <div class="flex items-center gap-3 mb-3">
+            <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=100&auto=format&fit=crop" class="w-12 h-12 rounded-full object-cover border-2 border-brand" alt="Branch">
+            <div><div class="font-black text-sm text-navy" data-i18n="branch2Title">فرع حي الأندلس</div><div class="text-[11px] text-brand font-bold" data-i18n="branch2Tag">مركز العائلة</div></div>
+          </div>
+          <div class="text-[12px] text-gray-600 space-y-1.5"><div><i class="fa-solid fa-location-dot text-brand ml-1"></i><span data-i18n="branch2Addr">حي الأندلس، شارع الفنار، طرابلس</span></div><div><i class="fa-solid fa-phone text-gray-400 ml-1"></i><span dir="ltr">+218 92 360 0002</span></div></div>
+        </div>
+        <div class="border rounded-lg p-4 bg-[#fafafa] hover:shadow-md transition">
+          <div class="flex items-center gap-3 mb-3">
+            <img src="https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?q=80&w=100&auto=format&fit=crop" class="w-12 h-12 rounded-full object-cover border-2 border-brand" alt="Branch">
+            <div><div class="font-black text-sm text-navy" data-i18n="branch3Title">فرع زاوية الدهماني</div><div class="text-[11px] text-brand font-bold" data-i18n="branch3Tag">بالقرب من الكورنيش</div></div>
+          </div>
+          <div class="text-[12px] text-gray-600 space-y-1.5"><div><i class="fa-solid fa-location-dot text-brand ml-1"></i><span data-i18n="branch3Addr">طريق الشط، زاوية الدهماني، طرابلس</span></div><div><i class="fa-solid fa-phone text-gray-400 ml-1"></i><span dir="ltr">+218 91 360 0003</span></div></div>
+        </div>
+        <div class="border rounded-lg p-4 bg-[#fafafa] hover:shadow-md transition">
+          <div class="flex items-center gap-3 mb-3">
+            <img src="https://images.unsplash.com/photo-1519562578630-2a6ef1155c18?q=80&w=100&auto=format&fit=crop" class="w-12 h-12 rounded-full object-cover border-2 border-brand" alt="Branch">
+            <div><div class="font-black text-sm text-navy" data-i18n="branch4Title">فرع سوق الجمعة</div><div class="text-[11px] text-brand font-bold" data-i18n="branch4Tag">الشارع الدائري</div></div>
+          </div>
+          <div class="text-[12px] text-gray-600 space-y-1.5"><div><i class="fa-solid fa-location-dot text-brand ml-1"></i><span data-i18n="branch4Addr">سوق الجمعة، الشارع الدائري، طرابلس</span></div><div><i class="fa-solid fa-phone text-gray-400 ml-1"></i><span dir="ltr">+218 94 360 0004</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT STRIP -->
+  <div id="contact" class="bg-navy text-white">
+    <div class="max-w-[1420px] mx-auto px-4 py-4 flex flex-col lg:flex-row gap-4 items-center justify-between">
+      <div class="font-bold text-[14px] tracking-wide flex items-center gap-2">
+        <i class="fa-solid fa-paper-plane text-brand text-lg"></i>
+        <span data-i18n="newsletterHeading">تواصل معنا أو اشترك لمعرفة أحدث ألعاب 2025</span>
+      </div>
+      <form id="newsForm" class="flex-1 max-w-[500px] w-full relative">
+        <input id="newsInput" type="text" data-i18n-placeholder="newsPlaceholder" placeholder="أدخل بريدك الإلكتروني أو رقم هاتفك..." class="w-full h-[38px] rounded px-3 text-black text-[13px] outline-none">
+        <button type="submit" class="absolute end-0 top-0 h-[38px] px-4 bg-brand hover:bg-brandDark text-white text-xs font-bold rounded-e transition" data-i18n="subscribeBtn">اشتراك</button>
+      </form>
+      <div class="flex items-center gap-2 text-[12px]">
+        <i class="fa-solid fa-phone text-brand text-base"></i>
+        <div>
+          <div class="text-[10px] text-gray-400" data-i18n="directOrder">طلب مباشر عبر الهاتف</div>
+          <div class="font-bold" dir="ltr">+218 91 360 0000</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER LINKS -->
+  <div class="bg-[#f7f7f7] border-t py-6">
+    <div class="max-w-[1420px] mx-auto px-4">
+      <div class="text-center font-bold text-[13px] uppercase tracking-wide mb-4 text-navy" data-i18n="footerNavTitle">دليل الألعاب الأكثر شعبية في ليبيا</div>
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 text-[11px]">
+        <div>
+          <div class="font-bold uppercase mb-2 flex items-center gap-2 text-navy"><i class="fa-solid fa-cube text-brand"></i><span data-i18n="fLego">ليغو ومجموعات تركيب</span></div>
+          <ul class="space-y-1 text-gray-600"><li>• LEGO Technic 4x4</li><li>• LEGO Star Wars Ship</li><li>• LEGO Friends Cafe</li><li>• Mega Bloks</li></ul>
+        </div>
+        <div>
+          <div class="font-bold uppercase mb-2 flex items-center gap-2 text-navy"><i class="fa-solid fa-heart text-pink-600"></i><span data-i18n="fDolls">دمى وألعاب بنات</span></div>
+          <ul class="space-y-1 text-gray-600"><li>• Barbie Dreamhouse</li><li>• Baby Born</li><li>• LOL Surprise OMG</li><li>• Disney Princess</li></ul>
+        </div>
+        <div>
+          <div class="font-bold uppercase mb-2 flex items-center gap-2 text-navy"><i class="fa-solid fa-bicycle text-blue-600"></i><span data-i18n="fOutdoor">حركة وهواء طلق</span></div>
+          <ul class="space-y-1 text-gray-600"><li>• Bicycles 12-20</li><li>• Electric Scooter</li><li>• Trampolines</li><li>• Family Pools</li></ul>
+        </div>
+        <div>
+          <div class="font-bold uppercase mb-2 flex items-center gap-2 text-navy"><i class="fa-solid fa-brain text-purple-600"></i><span data-i18n="fBrain">ألعاب ذكاء وتحدي</span></div>
+          <ul class="space-y-1 text-gray-600"><li>• Monopoly</li><li>• UNO Flip</li><li>• Ravensburger Puzzle</li><li>• Play-Doh</li></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="bg-[#efefef] border-t text-[11px] py-8">
+  <div class="max-w-[1420px] mx-auto px-4 grid grid-cols-2 lg:grid-cols-5 gap-6 text-gray-600">
+    <div>
+      <div class="font-bold uppercase mb-3 text-navy" data-i18n="fAbout">عن المتجر</div>
+      <ul class="space-y-1.5">
+        <li><a href="#" class="hover:text-brand" data-i18n="fAbout1">نبذة عن Toy Store Tripoly</a></li>
+        <li><a href="#" class="hover:text-brand" data-i18n="fAbout2">سياسة الدفع عند الاستلام</a></li>
+        <li><a href="#" class="hover:text-brand" data-i18n="fAbout3">الشحن لكافة مناطق طرابلس</a></li>
+        <li><a href="#" class="hover:text-brand" data-i18n="fAbout4">الاستبدال والاسترجاع</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="font-bold uppercase mb-3 text-navy" data-i18n="fService">خدمات الزبائن</div>
+      <ul class="space-y-1.5">
+        <li><a href="#magasins" class="hover:text-brand" data-i18n="fService1">فروعنا في طرابلس</a></li>
+        <li><a href="#" class="hover:text-brand" data-i18n="fService2">خدمة توصيل الهدايا مع تغليف</a></li>
+        <li><a href="#" class="hover:text-brand" data-i18n="fService3">الدعم الفني والشكاوى</a></li>
+        <li><a href="#" class="hover:text-brand" data-i18n="fService4">الأسئلة الشائعة FAQ</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="font-bold uppercase mb-3 text-navy" data-i18n="fContact">العنوان والتواصل</div>
+      <ul class="space-y-2">
+        <li><i class="fa-solid fa-location-dot text-brand ml-1"></i><span data-i18n="fAddress">طرابلس، ليبيا - طريق قرقارش / حي الأندلس</span></li>
+        <li><i class="fa-solid fa-phone text-brand ml-1"></i><span dir="ltr">+218 91 360 0000</span></li>
+        <li><i class="fa-solid fa-envelope text-brand ml-1"></i><span dir="ltr">info@toystore-tripoly.ly</span></li>
+        <li class="pt-1 text-gray-500" data-i18n="fHours">السبت إلى الخميس: 09:30 صباحاً – 10:30 ليلاً</li>
+      </ul>
+    </div>
+    <div class="col-span-2">
+      <div class="font-bold uppercase mb-2 text-navy" data-i18n="fPayment">طريقة الدفع المعتمدة</div>
+      <div class="bg-white p-3 rounded border border-gray-200 mb-3">
+        <div class="flex items-center gap-2 text-brand font-bold text-xs mb-1"><i class="fa-solid fa-shield-halved text-base"></i><span data-i18n="fPaymentTitle">الدفع نقداً عند الاستلام فقط (Cash on Delivery)</span></div>
+        <p class="text-[10px] text-gray-500 leading-normal" data-i18n="fPaymentText">لا نطلب أي دفع مسبق. تستلم طلبيتك وتتحقق من الألعاب ثم تدفع للمندوب بالدينار الليبي (LYD).</p>
+      </div>
+      <div class="flex items-center gap-3 mt-4">
+        <span class="text-xs font-bold text-navy" data-i18n="followUs">تابعونا:</span>
+        <div class="flex gap-2 text-base text-gray-700">
+          <a href="#" class="w-8 h-8 rounded-full bg-white border flex items-center justify-center hover:text-brand transition"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" class="w-8 h-8 rounded-full bg-white border flex items-center justify-center hover:text-brand transition"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="w-8 h-8 rounded-full bg-white border flex items-center justify-center hover:text-brand transition"><i class="fa-brands fa-tiktok"></i></a>
+          <a href="#" class="w-8 h-8 rounded-full bg-white border flex items-center justify-center hover:text-brand transition"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="border-t mt-6 pt-4 text-center text-gray-500 text-[10px]">
+    © 2025 Toy Store Tripoly — <span data-i18n="rights">جميع الحقوق محفوظة</span> | Le monde des jouets, livré chez vous | عالم الألعاب يصل إلى باب منزلك
+  </div>
+</footer>
+
+<!-- CART DRAWER -->
+<div id="cartDrawer" class="fixed inset-0 z-[70] hidden">
+  <div id="cartBg" class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+  <div class="absolute inset-y-0 end-0 w-[92%] max-w-[420px] bg-white shadow-2xl flex flex-col">
+    <div class="p-4 border-b flex justify-between items-center bg-gray-50">
+      <div class="font-bold text-navy flex items-center gap-2">
+        <i class="fa-solid fa-cart-shopping text-brand"></i>
+        <span data-i18n="cartTitle">سلة المشتريات</span>
+        <span id="cartCount2" class="bg-brand text-white text-xs px-2 py-0.5 rounded-full">0</span>
+      </div>
+      <button id="closeCart" class="w-8 h-8 rounded-full bg-gray-200 hover:bg-gray-300 flex items-center justify-center text-gray-700 transition"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="bg-amber-50 border-b border-amber-200 p-2.5 px-4 text-xs text-amber-900 flex items-center gap-2">
+      <i class="fa-solid fa-hand-holding-dollar text-brand text-sm"></i>
+      <span><strong data-i18n="reminder">تذكير:</strong> <span data-i18n="codReminder">الدفع نقداً عند استلام طلبيتك في طرابلس (LYD)</span></span>
+    </div>
+    <div id="cartItems" class="flex-1 overflow-auto p-4 space-y-3 text-[13px]"></div>
+    <div class="p-4 border-t bg-[#fafafa]">
+      <div class="flex justify-between items-center text-sm font-bold text-navy mb-3">
+        <span data-i18n="total">المجموع الكلي:</span>
+        <span id="cartTotal" class="text-brand text-lg font-black">0 LYD</span>
+      </div>
+      <button id="openCheckoutBtn" disabled class="w-full bg-brand hover:bg-brandDark text-white font-bold py-3 rounded-md transition shadow flex items-center justify-center gap-2 text-sm disabled:opacity-50 disabled:cursor-not-allowed">
+        <i class="fa-solid fa-truck-fast"></i>
+        <span data-i18n="confirmCod">تأكيد الطلب الآن (الدفع عند الاستلام)</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- CHECKOUT MODAL (COD ONLY) -->
+<div id="checkoutModal" class="fixed inset-0 z-[80] hidden flex items-center justify-center p-3">
+  <div id="checkoutModalBg" class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+  <div class="relative bg-white rounded-xl shadow-2xl max-w-[500px] w-full p-6 overflow-hidden z-10 fade-in">
+    <div class="flex justify-between items-center pb-3 border-b">
+      <div>
+        <h3 class="font-black text-lg text-navy" data-i18n="checkoutTitle">تأكيد طلب التوصيل بطرابلس</h3>
+        <p class="text-xs text-gray-500" data-i18n="checkoutSub">الدفع نقداً بالدينار الليبي عند وصول المندوب</p>
+      </div>
+      <button id="closeCheckoutModal" class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-600"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <form id="orderForm" class="mt-4 space-y-3 text-xs">
+      <div>
+        <label class="block font-bold text-gray-700 mb-1" data-i18n="fieldName">الاسم الكامل *</label>
+        <input required id="custName" type="text" class="w-full border rounded p-2 text-sm outline-none focus:border-brand">
+      </div>
+      <div>
+        <label class="block font-bold text-gray-700 mb-1" data-i18n="fieldPhone">رقم الهاتف للتواصل *</label>
+        <input required id="custPhone" type="tel" dir="ltr" placeholder="091 000 0000" class="w-full border rounded p-2 text-sm outline-none focus:border-brand">
+      </div>
+      <div>
+        <label class="block font-bold text-gray-700 mb-1" data-i18n="fieldArea">المنطقة / بلدية طرابلس *</label>
+        <select id="custArea" class="w-full border rounded p-2 text-sm outline-none focus:border-brand bg-white">
+          <option value="قرقارش">طريق قرقارش / غوط الشعال</option>
+          <option value="الأندلس">حي الأندلس</option>
+          <option value="الدهماني">زاوية الدهماني / طريق الشط</option>
+          <option value="سوق الجمعة">سوق الجمعة / الدائري</option>
+          <option value="تاجوراء">تاجوراء والنشيع</option>
+          <option value="عين زارة">عين زارة</option>
+          <option value="أبوسليم">أبوسليم</option>
+        </select>
+      </div>
+      <div>
+        <label class="block font-bold text-gray-700 mb-1" data-i18n="fieldAddress">العنوان التفصيلي / معلم بارز</label>
+        <input id="custAddress" type="text" class="w-full border rounded p-2 text-sm outline-none focus:border-brand">
+      </div>
+      <div class="bg-gray-50 p-3 rounded border text-xs">
+        <div class="flex justify-between font-bold text-navy"><span data-i18n="orderTotal">إجمالي الطلبية:</span><span id="modalTotal" class="text-brand font-black text-sm">0 LYD</span></div>
+        <div class="flex justify-between text-gray-500 mt-1"><span data-i18n="paymentMethod">طريقة الدفع:</span><span class="text-emerald-700 font-bold" data-i18n="codOnly">كاش عند الاستلام فقط (COD)</span></div>
+      </div>
+      <button type="submit" class="w-full bg-brand hover:bg-brandDark text-white font-bold py-3 rounded-lg text-sm shadow transition mt-2" data-i18n="submitOrder">إرسال الطلب الآن</button>
+    </form>
+  </div>
+</div>
+
+<!-- TOASTS -->
+<div id="toastContainer" class="fixed bottom-4 start-4 z-[100] flex flex-col gap-2 pointer-events-none"></div>
+
+<script>
+/* ================= TRANSLATIONS ================= */
+const CURRENCY = 'LYD';
+let currentLang = 'ar';
+
+const T = {
+  ar: {
+    allCategories: "جميع الأقسام", codBadge: "الدفع عند الاستلام فقط", navLego: "ألعاب ليغو", navDolls: "دمى باربي",
+    navOutdoor: "ألعاب الركوب والخارج", navShowrooms: "فروعنا في طرابلس", navContact: "اتصل بنا",
+    cityBadge: "ليبيا • طرابلس", mainSlogan: "عالم الألعاب يصل إلى باب منزلك", visitBranch: "فروع طرابلس",
+    sloganSub: "عالم الألعاب يصل إلى باب منزلك", searchPlaceholder: "ابحث عن ألعاب ليغو، باربي، دراجات، سيارات أطفال...",
+    needHelp: "خدمة الزبائن بطرابلس", codShort: "دفع كاش بالاستلام", cartLabel: "السلة", menuTitle: "أقسام الألعاب",
+    drawerLego: "ليغو ومجسمات تركيب", drawerDolls: "دمى باربي وإكسسوارات", drawerOutdoor: "دراجات وسكوترات خارجية",
+    drawerBoard: "ألعاب ذكاء وتحديات", drawerShowrooms: "فروعنا في طرابلس",
+    heroBadge1: "تشكيلة أصلية حصرية في طرابلس", heroTitle1a: "ابنِ خيالك مع", heroTitle1b: "أقوى تشكيلات LEGO",
+    heroDesc1: "مجموعات حرب النجوم وسباقات تكنيك ومارفل. توصيل فوري داخل طرابلس مع خدمة الدفع عند الاستلام نقداً.",
+    saveTag: "تخفيضات حتى -30%", codTagShort: "الدفع عند الباب", shopNow: "تسوق الآن",
+    heroBadge2: "باربي ومنازل الأحلام • خصم حتى 25%", heroTitle2a: "بيت الأحلام باربي",
+    heroDesc2: "أكبر تشكيلة من دمى باربي الأصلية، دمى لول سيربرايز، ومجسمات ديزني مع توصيل سريع في طرابلس.",
+    discoverDolls: "اكتشف المجموعة", codTagShort2: "الدفع عند الاستلام",
+    heroBadge3: "أنشطة الهواء الطلق والمرح", heroTitle3a: "سكوترات ودراجات الأطفال", heroTitle3b: "أمان تام ومتعة بلا حدود",
+    heroDesc3: "سيارات كهربائية، سكوترات قابلة للطي، وخوذات أمان. اطلبها الآن وتصلك لباب بيتك في طرابلس بدون دفع مسبق!",
+    shopOutdoor: "شاهد ألعاب الخارج",
+    propCod: "الدفع عند الاستلام", propCodSub: "ادفع نقداً عند استلام طلبيتك", propDelivery: "توصيل سريع بطرابلس",
+    propDeliverySub: "خلال 24-48 ساعة لباب منزلك", propQuality: "ألعاب أصلية ومعتمدة", propQualitySub: "مطابقة لمعايير السلامة الدولية",
+    propShowrooms: "فروع متعددة بطرابلس", propShowroomsSub: "حي الأندلس، قرقارش، الدهماني",
+    legoWorld: "عالم LEGO", legoBoxesSubtitle: "صناديق البناء الإبداعية", saveUpTo: "وفر حتى", exploreBtn: "اكتشف العرض",
+    poolTitle: "المسابح والألعاب المائية", giftIncluded: "منفاخ كهربائي سريع", freeGift: "هدية مجانية", orderCod: "اطلب بالدفع عند الاستلام",
+    codBannerShort: "الدفع نقداً عند الباب", bannerUniverse: "عالم ألعاب التركيب والبناء", bannerUniverseSub: "متعة، تركيز، وتنمية مهارات الأطفال",
+    discountUpTo: "خصم يصل إلى", viewCatalog: "تصفح التشكيلة",
+    princessWorld: "عالم الأميرات والدمى", dollsBannerTitle: "أكبر تشكيلة دمى باربي ولول الأصلية",
+    codBannerNote: "تصلك مع مندوبنا والدفع عند الاستلام", sectionLego: "تشكيلة LEGO® • ستار وورز، تكنيك، وسيتي",
+    sectionDolls: "مختارات الدمى وعرائس الأطفال", codOnlyNote: "الدفع كاش عند الباب",
+    sectionFigures: "مجسمات وشخصيات الأكشن • مارفل، بوكيمون، دراغون بول", availableTripoli: "متوفر في طرابلس",
+    specialDeals: "تخفيضات خاصة", outdoorHeading: "الدراجات والسكوترات وألعاب الركوب",
+    outdoorSub: "توصيل لكافة أحياء طرابلس مع الدفع عند الاستلام نقداً",
+    catBike: "دراجات بدون عجلات مساعدة", catScooter: "سكوتر كهربائي", catBalance: "دراجات توازن للصغار",
+    catKidsCar: "سيارات ركوب كهربائية", catKidsBike: "دراجات أطفال 12-16 إنش", catLightScooter: "سكوتر 3 عجلات مضيء",
+    sectionHotDeals: "أقوى العروض والصفقات • تخفيضات تصل إلى 50%", sectionCategories: "أقسام الألعاب العائلية والتعليمية",
+    catBoardGames: "ألعاب اللوح والذكاء", catConsoles: "أجهزة ألعاب إلكترونية", catArts: "رسم وصلصال وأشغال",
+    catPlush: "دمى محشوة وبطانيات", sectionBestsellers: "الأكثر مبيعاً هذا الشهر في طرابلس",
+    sectionPuzzles: "تشكيلة البازل وألغاز التفكير (100 - 1000 قطعة)", fastService: "خدمة التوصيل السريع",
+    deliveryAreas: "توصيل لكافة مناطق طرابلس الكبرى", codBannerText1: "الدفع نقداً عند الاستلام فقط",
+    codBannerText2: "عاين منتجك أولاً ثم ادفع للمندوب", instantOrder: "خدمة تجهيز الطلب الفوري",
+    instantOrderText: "طلبك يصلك خلال أقل من 24 ساعة، أو استلمه مباشرة من فرعنا!",
+    showroomsTitle: "فروع Toy Store Tripoly", showroomsSubtitle: "مرحباً بكم في فروعنا لتجربة أروع الألعاب واختيار هدايا أطفالكم",
+    branch1Title: "فرع طريق قرقارش", branch1Tag: "المعرض الرئيسي", branch1Addr: "طريق قرقارش، بجانب مجمع الأعمال، طرابلس",
+    branch2Title: "فرع حي الأندلس", branch2Tag: "مركز العائلة", branch2Addr: "حي الأندلس، شارع الفنار، طرابلس",
+    branch3Title: "فرع زاوية الدهماني", branch3Tag: "بالقرب من الكورنيش", branch3Addr: "طريق الشط، زاوية الدهماني، طرابلس",
+    branch4Title: "فرع سوق الجمعة", branch4Tag: "الشارع الدائري", branch4Addr: "سوق الجمعة، الشارع الدائري، طرابلس",
+    newsletterHeading: "تواصل معنا أو اشترك لمعرفة أحدث ألعاب 2025", newsPlaceholder: "أدخل بريدك الإلكتروني أو رقم هاتفك...",
+    subscribeBtn: "اشتراك", directOrder: "طلب مباشر عبر الهاتف", footerNavTitle: "دليل الألعاب الأكثر شعبية في ليبيا",
+    fLego: "ليغو ومجموعات تركيب", fDolls: "دمى وألعاب بنات", fOutdoor: "حركة وهواء طلق", fBrain: "ألعاب ذكاء وتحدي",
+    fAbout: "عن المتجر", fAbout1: "نبذة عن Toy Store Tripoly", fAbout2: "سياسة الدفع عند الاستلام",
+    fAbout3: "الشحن لكافة مناطق طرابلس", fAbout4: "الاستبدال والاسترجاع",
+    fService: "خدمات الزبائن", fService1: "فروعنا في طرابلس", fService2: "خدمة توصيل الهدايا مع تغليف",
+    fService3: "الدعم الفني والشكاوى", fService4: "الأسئلة الشائعة FAQ",
+    fContact: "العنوان والتواصل", fAddress: "طرابلس، ليبيا - طريق قرقارش / حي الأندلس",
+    fHours: "السبت إلى الخميس: 09:30 صباحاً – 10:30 ليلاً", fPayment: "طريقة الدفع المعتمدة",
+    fPaymentTitle: "الدفع نقداً عند الاستلام فقط (Cash on Delivery)",
+    fPaymentText: "لا نطلب أي دفع مسبق. تستلم طلبيتك وتتحقق من الألعاب ثم تدفع للمندوب بالدينار الليبي (LYD).",
+    followUs: "تابعونا:", rights: "جميع الحقوق محفوظة",
+    cartTitle: "سلة المشتريات", reminder: "تذكير:", codReminder: "الدفع نقداً عند استلام طلبيتك في طرابلس (LYD)",
+    total: "المجموع الكلي:", confirmCod: "تأكيد الطلب الآن (الدفع عند الاستلام)",
+    checkoutTitle: "تأكيد طلب التوصيل بطرابلس", checkoutSub: "الدفع نقداً بالدينار الليبي عند وصول المندوب",
+    fieldName: "الاسم الكامل *", fieldPhone: "رقم الهاتف للتواصل *", fieldArea: "المنطقة / بلدية طرابلس *",
+    fieldAddress: "العنوان التفصيلي / معلم بارز", orderTotal: "إجمالي الطلبية:", paymentMethod: "طريقة الدفع:",
+    codOnly: "كاش عند الاستلام فقط (COD)", submitOrder: "إرسال الطلب الآن",
+    emptyCart: "سلتك فارغة حالياً", emptyCartSub: "أضف بعض الألعاب الممتعة لأطفالك!",
+    addToCart: "أضف للسلة", addedToast: "تمت إضافة المنتج للسلة", orderSuccess: "تم تأكيد طلبك بنجاح! 🚚",
+    subscribed: "شكراً لاشتراكك! سنتواصل معك قريباً.", langToast: "تم تغيير اللغة إلى العربية",
+    qtyLabel: "الكمية", remove: "حذف", bestseller: "الأكثر مبيعاً", noResults: "لا توجد نتائج"
+  },
+  en: {
+    allCategories: "All Categories", codBadge: "Cash on Delivery Only", navLego: "LEGO Sets", navDolls: "Barbie Dolls",
+    navOutdoor: "Outdoor & Ride-on", navShowrooms: "Tripoli Showrooms", navContact: "Contact Us",
+    cityBadge: "Libya • Tripoli", mainSlogan: "عالم الألعاب يصل إلى باب منزلك", visitBranch: "Tripoli Stores",
+    sloganSub: "عالم الألعاب يصل إلى باب منزلك", searchPlaceholder: "Search LEGO, Barbie, bikes, kids cars...",
+    needHelp: "Customer Service Tripoli", codShort: "Cash on Delivery", cartLabel: "Cart", menuTitle: "Toy Categories",
+    drawerLego: "LEGO & Building Sets", drawerDolls: "Barbie Dolls & Accessories", drawerOutdoor: "Bikes & Outdoor Scooters",
+    drawerBoard: "Brain & Strategy Games", drawerShowrooms: "Our Tripoli Showrooms",
+    heroBadge1: "Exclusive Original Range in Tripoli", heroTitle1a: "Build your imagination with", heroTitle1b: "the best LEGO sets",
+    heroDesc1: "Star Wars, Technic and Marvel sets. Fast delivery across Tripoli with Cash on Delivery.",
+    saveTag: "Discounts up to -30%", codTagShort: "Pay at your door", shopNow: "Shop Now",
+    heroBadge2: "Barbie & Dreamhouses • Up to 25% Off", heroTitle2a: "The Barbie Dream House",
+    heroDesc2: "Huge selection of authentic Barbie dolls, LOL Surprise and Disney figures with fast home delivery in Tripoli.",
+    discoverDolls: "Discover the Collection", codTagShort2: "Cash on Delivery",
+    heroBadge3: "Outdoor Adventures & Fun", heroTitle3a: "Kids Scooters & Bicycles", heroTitle3b: "Total safety, endless fun",
+    heroDesc3: "Electric ride-on cars, foldable scooters and safety helmets. Delivered to your door in Tripoli, no prepayment!",
+    shopOutdoor: "Explore Outdoor Toys",
+    propCod: "Cash on Delivery", propCodSub: "Pay in cash when your order arrives", propDelivery: "Fast Tripoli Delivery",
+    propDeliverySub: "Within 24-48 hours to your door", propQuality: "Certified & Original", propQualitySub: "Meets international safety standards",
+    propShowrooms: "Multiple Tripoli Branches", propShowroomsSub: "Al Andalus, Gargarish, Dahmani",
+    legoWorld: "LEGO World", legoBoxesSubtitle: "Creative Building Boxes", saveUpTo: "Save up to", exploreBtn: "Explore Deal",
+    poolTitle: "Pools & Water Toys", giftIncluded: "Fast electric air pump", freeGift: "Free gift", orderCod: "Order with Cash on Delivery",
+    codBannerShort: "Pay cash at the door", bannerUniverse: "World of Building & Construction", bannerUniverseSub: "Fun, focus and skill building for children",
+    discountUpTo: "Discount up to", viewCatalog: "Browse Range",
+    princessWorld: "Princess & Doll World", dollsBannerTitle: "Largest authentic Barbie & LOL doll range",
+    codBannerNote: "Delivered by our driver, pay on arrival", sectionLego: "LEGO® Collection • Star Wars, Technic & City",
+    sectionDolls: "Featured Dolls & Dollhouses", codOnlyNote: "Pay cash at the door",
+    sectionFigures: "Action Figures • Marvel, Pokémon, Dragon Ball", availableTripoli: "Available in Tripoli",
+    specialDeals: "Special Offers", outdoorHeading: "Bikes, Scooters & Ride-on Toys",
+    outdoorSub: "Delivery to all Tripoli neighbourhoods with Cash on Delivery",
+    catBike: "Training Bikes (no pedals)", catScooter: "Electric Scooters", catBalance: "Balance Bikes for toddlers",
+    catKidsCar: "Electric Ride-on Cars", catKidsBike: "Kids Bikes 12-16 inch", catLightScooter: "Light-up 3-wheel Scooters",
+    sectionHotDeals: "Hot Deals & Clearance • Up to 50% Off", sectionCategories: "Family & Educational Games",
+    catBoardGames: "Board & Brain Games", catConsoles: "Handheld Gaming", catArts: "Dough & Creative Arts",
+    catPlush: "Plush Toys & Blankets", sectionBestsellers: "Bestsellers this month in Tripoli",
+    sectionPuzzles: "Puzzles & Logic Games (100 - 1000 pcs)", fastService: "Express Delivery Service",
+    deliveryAreas: "Delivery across greater Tripoli", codBannerText1: "Cash on Delivery Only",
+    codBannerText2: "Inspect your toy first, then pay the driver", instantOrder: "Fast Order Processing",
+    instantOrderText: "Your order arrives within 24 hours, or pick it up at our branch!",
+    showroomsTitle: "Toy Store Tripoly Branches", showroomsSubtitle: "Welcome to our showrooms for the best toys and gifts for your kids",
+    branch1Title: "Gargarish Road Branch", branch1Tag: "Main Showroom", branch1Addr: "Gargarish Road, beside the Business Complex, Tripoli",
+    branch2Title: "Al Andalus Branch", branch2Tag: "Family Center", branch2Addr: "Al Andalus District, Al Fanar Street, Tripoli",
+    branch3Title: "Zawiyat Dahmani Branch", branch3Tag: "Near the Corniche", branch3Addr: "Al Shat Road, Zawiyat Dahmani, Tripoli",
+    branch4Title: "Souq Al Jumaa Branch", branch4Tag: "Ring Road", branch4Addr: "Souq Al Jumaa, Ring Road, Tripoli",
+    newsletterHeading: "Stay updated with the latest 2025 toy releases", newsPlaceholder: "Enter your email or phone number...",
+    subscribeBtn: "Subscribe", directOrder: "Order by phone", footerNavTitle: "Most Popular Toy Guide in Libya",
+    fLego: "LEGO & Building Sets", fDolls: "Dolls & Girls' Toys", fOutdoor: "Outdoor & Active Play", fBrain: "Brain & Strategy Games",
+    fAbout: "About the Store", fAbout1: "About Toy Store Tripoly", fAbout2: "Cash on Delivery policy",
+    fAbout3: "Shipping across Tripoli", fAbout4: "Exchanges & returns",
+    fService: "Customer Service", fService1: "Our Tripoli branches", fService2: "Gift wrapping & delivery",
+    fService3: "Support & complaints", fService4: "FAQ",
+    fContact: "Address & Contact", fAddress: "Tripoli, Libya - Gargarish Road / Al Andalus",
+    fHours: "Saturday to Thursday: 09:30 AM – 10:30 PM", fPayment: "Accepted Payment",
+    fPaymentTitle: "Cash on Delivery only",
+    fPaymentText: "No prepayment required. Receive your order, check the toys, then pay the driver in Libyan Dinars (LYD).",
+    followUs: "Follow us:", rights: "All rights reserved",
+    cartTitle: "Shopping Cart", reminder: "Reminder:", codReminder: "Pay cash when your order is delivered in Tripoli (LYD)",
+    total: "Total:", confirmCod: "Confirm Order (Cash on Delivery)",
+    checkoutTitle: "Confirm Tripoli Delivery", checkoutSub: "Pay cash in Libyan Dinars when the driver arrives",
+    fieldName: "Full name *", fieldPhone: "Contact phone *", fieldArea: "Area / Tripoli district *",
+    fieldAddress: "Detailed address / landmark", orderTotal: "Order total:", paymentMethod: "Payment method:",
+    codOnly: "Cash on delivery only (COD)", submitOrder: "Place Order Now",
+    emptyCart: "Your cart is empty", emptyCartSub: "Add some fun toys for your kids!",
+    addToCart: "Add to Cart", addedToast: "Added to cart", orderSuccess: "Order placed successfully! 🚚",
+    subscribed: "Thanks for subscribing! We'll be in touch soon.", langToast: "Language switched to English",
+    qtyLabel: "Qty", remove: "Remove", bestseller: "Bestseller", noResults: "No results found"
+  }
+};
+
+/* ================= PRODUCTS (prices in LYD) ================= */
+const PRODUCTS = [
+  { id:'l1', cat:'lego', brand:'LEGO', name:{ar:'LEGO Star Wars 75309 - سفينة الجمهورية الحربية', en:'LEGO Star Wars 75309 - Republic Gunship'}, price:520, old:620, badge:'-15%', img:'https://images.unsplash.com/photo-1587654780291-39c9404d746b?q=80&w=400&auto=format&fit=crop' },
+  { id:'l2', cat:'lego', brand:'LEGO', name:{ar:'LEGO Technic 42141 - سيارة سباق McLaren F1', en:'LEGO Technic 42141 - McLaren F1 Race Car'}, price:480, old:560, badge:'مميز', img:'https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?q=80&w=400&auto=format&fit=crop' },
+  { id:'l3', cat:'lego', brand:'LEGO', name:{ar:'LEGO Creator 31136 - ببغاء استوائي 3 في 1', en:'LEGO Creator 31136 - Tropical Parrot 3-in-1'}, price:135, old:165, badge:'TOP', img:'https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?q=80&w=400&auto=format&fit=crop' },
+  { id:'l4', cat:'lego', brand:'LEGO', name:{ar:'LEGO City 60380 - وسط المدينة المتكامل', en:'LEGO City 60380 - Downtown Complete Set'}, price:610, old:720, badge:'-20%', img:'https://images.unsplash.com/photo-1587654780291-39c9404d746b?q=80&w=400&auto=format&fit=crop' },
+  { id:'d1', cat:'doll', brand:'Barbie', name:{ar:'بيت أحلام باربي الأصلي 3 طوابق مع مسبح', en:'Original Barbie Dreamhouse 3 Floors with Pool'}, price:340, old:420, img:'https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?q=80&w=400&auto=format&fit=crop' },
+  { id:'d2', cat:'doll', brand:'Baby Born', name:{ar:'دمية بيبي بورن السحرية 9 وظائف', en:'Baby Born Magic Doll 9 Functions'}, price:195, old:240, img:'https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?q=80&w=400&auto=format&fit=crop' },
+  { id:'d3', cat:'doll', brand:'L.O.L', name:{ar:'دمية إل أو إل سبرايز OMG مع أضواء', en:'L.O.L Surprise OMG Doll with Lights'}, price:160, old:210, img:'https://images.unsplash.com/photo-1558060370-d644479cb6f7?q=80&w=400&auto=format&fit=crop' },
+  { id:'d4', cat:'doll', brand:'Disney', name:{ar:'أميرة ديزني رابونزل 38 سم بتاج مضيء', en:'Disney Rapunzel 38cm with Glowing Tiara'}, price:175, old:220, img:'https://images.unsplash.com/photo-1535572290543-960a8046f5af?q=80&w=400&auto=format&fit=crop' },
+  { id:'f1', cat:'fig', brand:'Marvel', name:{ar:'مجسم سبايدرمان تيتان 30 سم', en:'Spider-Man Titan Figure 30cm'}, price:65, old:85, img:'https://images.unsplash.com/photo-1612036782180-6f0b6cd846fe?q=80&w=300&auto=format&fit=crop' },
+  { id:'f2', cat:'fig', brand:'Pokémon', name:{ar:'بيكاتشو التفاعلي 25 سم مع أصوات', en:'Interactive Pikachu 25cm with Sounds'}, price:75, old:95, img:'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?q=80&w=300&auto=format&fit=crop' },
+  { id:'f3', cat:'fig', brand:'Star Wars', name:{ar:'مجسم بيبي يودا المتحرك', en:'Baby Yoda Moving Figure'}, price:120, old:155, img:'https://images.unsplash.com/photo-1608346128025-1896b97a6fa7?q=80&w=300&auto=format&fit=crop' },
+  { id:'f4', cat:'fig', brand:'Jurassic', name:{ar:'ديناصور تي ريكس العملاق 90 سم', en:'Giant T-Rex Dinosaur 90cm'}, price:210, old:260, img:'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=300&auto=format&fit=crop' },
+  { id:'a1', cat:'deal', brand:'Hot Wheels', name:{ar:'مضمار هوت ويلز العملاق مع سيارتين', en:'Hot Wheels Giant Track with 2 Cars'}, price:230, old:290, img:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=400&auto=format&fit=crop' },
+  { id:'a2', cat:'deal', brand:'Playmobil', name:{ar:'شاحنة إطفاء بلاي موبيل مع أضواء', en:'Playmobil Fire Truck with Lights'}, price:115, old:160, img:'https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?q=80&w=400&auto=format&fit=crop' },
+  { id:'a3', cat:'deal', brand:'Fisher Price', name:{ar:'مطبخ الأطفال التفاعلي مع أصوات', en:'Interactive Kids Kitchen with Sounds'}, price:185, old:245, img:'https://images.unsplash.com/photo-1587654780291-39c9404d746b?q=80&w=400&auto=format&fit=crop' },
+  { id:'a4', cat:'deal', brand:'JBL Kids', name:{ar:'سماعات لاسلكية آمنة للأطفال', en:'Safe Wireless Headphones for Kids'}, price:130, old:175, img:'https://images.unsplash.com/photo-1546435770-a3e426bf472b?q=80&w=400&auto=format&fit=crop' },
+  { id:'b1', cat:'best', brand:'VTech', name:{ar:'هاتف ذكي تعليمي مع 40 لعبة', en:'Educational Smart Phone with 40 Games'}, price:95, old:130, img:'https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?q=80&w=300&auto=format&fit=crop' },
+  { id:'b2', cat:'best', brand:'Smoby', name:{ar:'حامل ألعاب ولوح رسم متعدد الوضعيات', en:'Multi-Mode Play Stand & Drawing Board'}, price:85, old:110, img:'https://images.unsplash.com/photo-1587654780291-39c9404d746b?q=80&w=300&auto=format&fit=crop' },
+  { id:'b3', cat:'best', brand:'EVO Kids', name:{ar:'سكوتر مضيء بثلاث عجلات', en:'Light-up 3-Wheel Scooter'}, price:75, old:105, img:'https://images.unsplash.com/photo-1571068316344-75bc76f77890?q=80&w=300&auto=format&fit=crop' },
+  { id:'b4', cat:'best', brand:'Play-Doh', name:{ar:'مجموعة صلصال بلاي دو الكبرى 20 علبة', en:'Play-Doh Mega Set 20 Cans'}, price:65, old:90, img:'https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=300&auto=format&fit=crop' },
+  { id:'p1', cat:'puzzle', brand:'Ravensburger', name:{ar:'بازل قصر ديزني الساحر 1000 قطعة', en:'Disney Castle Puzzle 1000 pcs'}, price:55, old:75, img:'https://images.unsplash.com/photo-1612036782180-6f0b6cd846fe?q=80&w=400&auto=format&fit=crop' },
+  { id:'p2', cat:'puzzle', brand:'Clementoni', name:{ar:'بازل خريطة العالم للأطفال 500 قطعة', en:'World Map Kids Puzzle 500 pcs'}, price:48, old:65, img:'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?q=80&w=400&auto=format&fit=crop' },
+  { id:'p3', cat:'puzzle', brand:'LEGO', name:{ar:'بازل ثلاثي الأبعاد لأشهر المعالم', en:'3D Landmark Puzzle'}, price:85, old:110, img:'https://images.unsplash.com/photo-1587654780291-39c9404d746b?q=80&w=400&auto=format&fit=crop' },
+  { id:'p4', cat:'puzzle', brand:'Janod', name:{ar:'بازل خشبي مغناطيسي 100 قطعة', en:'Magnetic Wooden Puzzle 100 pcs'}, price:60, old:80, img:'https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?q=80&w=400&auto=format&fit=crop' }
+];
+
+/* ================= HELPERS ================= */
+const $ = (id) => document.getElementById(id);
+const t = (key) => T[currentLang][key] || key;
+const pName = (p) => p.name[currentLang];
+
+function productCard(p, compact = false) {
+  const badge = p.badge ? `<span class="bg-brand text-white text-[9px] font-black px-1.5 py-0.5 rounded">${p.badge}</span>` : '';
+  const old = p.old ? `<div class="text-[11px] line-through text-[#999] mt-0.5">${p.old} ${CURRENCY}</div>` : '';
+  if (compact) {
+    return `
+    <div class="product-card bg-white border border-[#e5e5e5] p-2 flex flex-col relative group hover:shadow-md transition cursor-pointer rounded-sm">
+      <div class="flex justify-between items-start"><span class="text-[9px] font-bold text-[#666]">${p.brand}</span>${badge}</div>
+      <img src="${p.img}" class="w-full h-[90px] object-contain my-2 group-hover:scale-105 transition duration-300" alt="${pName(p)}">
+      <div class="text-[11px] leading-tight line-clamp-2 font-medium min-h-[32px] text-gray-800">${pName(p)}</div>
+      <div class="mt-2 flex items-end justify-between">
+        <div><div class="text-brand font-black text-[14px]">${p.price} <span class="text-[10px]">${CURRENCY}</span></div>${old}</div>
+        <button onclick="addToCart('${p.id}')" class="add-cart bg-black hover:bg-brand text-white w-6 h-6 rounded-full flex items-center justify-center text-[10px] shadow" aria-label="${t('addToCart')}"><i class="fa-solid fa-plus"></i></button>
+      </div>
+    </div>`;
+  }
+  return `
+  <div class="product-card bg-white border border-[#e5e5e5] p-3 flex flex-col relative group hover:shadow-lg transition min-w-[190px] md:min-w-0 cursor-pointer rounded-sm">
+    <div class="flex justify-between items-start text-[10px]">
+      <span class="font-bold text-[#666]">${p.brand}</span>
+      <div class="flex gap-1"><span class="bg-amber-100 text-amber-800 text-[8px] font-bold px-1 rounded">COD</span>${badge}</div>
+    </div>
+    <div class="relative mt-2 h-[120px] flex items-center justify-center overflow-hidden">
+      <img src="${p.img}" class="max-h-[110px] object-contain group-hover:scale-110 transition duration-500" alt="${pName(p)}">
+    </div>
+    <div class="text-[12px] leading-tight line-clamp-2 font-medium mt-2 min-h-[34px] text-navy">${pName(p)}</div>
+    <div class="mt-auto pt-2 flex items-end justify-between border-t border-gray-100">
+      <div><div class="text-brand font-black text-[18px] leading-none">${p.price} <span class="text-[11px]">${CURRENCY}</span></div>${old}</div>
+      <button onclick="addToCart('${p.id}')" class="add-cart bg-brand hover:bg-brandDark text-white text-[11px] font-bold px-3 py-1.5 rounded transition shadow flex items-center gap-1">
+        <i class="fa-solid fa-cart-plus text-[10px]"></i><span>${t('addToCart')}</span>
+      </button>
+    </div>
+  </div>`;
+}
+
+function renderRow(id, items, compact = false) {
+  const el = $(id);
+  if (el) el.innerHTML = items.map(p => productCard(p, compact)).join('');
+}
+
+function renderAllProducts() {
+  const by = (c) => PRODUCTS.filter(p => p.cat === c);
+  renderRow('rowLego', by('lego'));
+  renderRow('rowDolls', by('doll'));
+  renderRow('rowFig', by('fig'), true);
+  renderRow('rowAffaires', by('deal'));
+  renderRow('rowBest', by('best'));
+  renderRow('rowPuzzle', by('puzzle'));
+}
+
+function scrollRow(id, dx) {
+  const el = $(id);
+  if (el) el.scrollBy({ left: dx, behavior: 'smooth' });
+}
+
+/* ================= LANGUAGE (layout stays RTL) ================= */
+function applyLanguage(lang) {
+  currentLang = lang;
+  // Direction is intentionally fixed to RTL: only the text language changes.
+  document.documentElement.lang = lang === 'ar' ? 'ar' : 'en';
+  document.documentElement.dir = 'rtl';
+
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (T[lang][key] !== undefined) el.textContent = T[lang][key];
+  });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    const key = el.getAttribute('data-i18n-placeholder');
+    if (T[lang][key] !== undefined) el.setAttribute('placeholder', T[lang][key]);
+  });
+
+  document.querySelectorAll('[data-lang]').forEach(b => {
+    const active = b.dataset.lang === lang;
+    b.classList.toggle('active', active);
+    b.classList.toggle('bg-brand', active);
+    b.classList.toggle('text-white', active);
+    b.classList.toggle('text-gray-600', !active);
+  });
+  document.querySelectorAll('[data-lang-btn]').forEach(b => {
+    const active = b.dataset.langBtn === lang;
+    b.classList.toggle('bg-brand', active);
+    b.classList.toggle('text-white', active);
+    b.classList.toggle('bg-gray-200', !active);
+    b.classList.toggle('text-gray-700', !active);
+  });
+  $('mobileLangBtn').textContent = lang === 'ar' ? 'EN / ع' : 'ع / EN';
+
+  renderAllProducts();
+  renderCart();
+  localStorage.setItem('tsl_lang', lang);
+}
+
+function setLanguage(lang) {
+  if (lang === currentLang) return;
+  applyLanguage(lang);
+  showToast(t('langToast'));
+}
+
+/* ================= HERO SLIDER ================= */
+let heroIndex = 0;
+const heroTrack = $('heroTrack');
+const heroDots = document.querySelectorAll('.hero-dot');
+const HERO_COUNT = 3;
+
+function updateHero() {
+  // RTL slider: positive translate moves toward the next slide
+  heroTrack.style.transform = `translateX(${heroIndex * 100}%)`;
+  heroDots.forEach((d, i) => d.classList.toggle('active', i === heroIndex));
+}
+function nextHero() { heroIndex = (heroIndex + 1) % HERO_COUNT; updateHero(); }
+function prevHero() { heroIndex = (heroIndex - 1 + HERO_COUNT) % HERO_COUNT; updateHero(); }
+
+$('nextHero').onclick = nextHero;
+$('prevHero').onclick = prevHero;
+heroDots.forEach((d, i) => d.onclick = () => { heroIndex = i; updateHero(); });
+
+let heroTimer = setInterval(nextHero, 6000);
+heroTrack.parentElement.addEventListener('mouseenter', () => clearInterval(heroTimer));
+heroTrack.parentElement.addEventListener('mouseleave', () => { heroTimer = setInterval(nextHero, 6000); });
+
+/* ================= CART (Cash on Delivery only) ================= */
+let cart = JSON.parse(localStorage.getItem('tsl_cart') || '[]');
+
+function cartTotal() {
+  return cart.reduce((s, c) => {
+    const p = PRODUCTS.find(x => x.id === c.id);
+    return s + (p ? p.price * c.qty : 0);
+  }, 0);
+}
+
+function addToCart(id) {
+  const p = PRODUCTS.find(x => x.id === id);
+  if (!p) return;
+  const item = cart.find(c => c.id === id);
+  if (item) item.qty++; else cart.push({ id, qty: 1 });
+  saveCart();
+  renderCart();
+  showToast(`${t('addedToast')}: ${pName(p).slice(0, 28)}…`);
+}
+
+function changeQty(id, delta) {
+  const item = cart.find(c => c.id === id);
+  if (!item) return;
+  item.qty += delta;
+  if (item.qty <= 0) cart = cart.filter(c => c.id !== id);
+  saveCart();
+  renderCart();
+}
+
+function removeFromCart(id) {
+  cart = cart.filter(c => c.id !== id);
+  saveCart();
+  renderCart();
+}
+
+function saveCart() { localStorage.setItem('tsl_cart', JSON.stringify(cart)); }
+
+function renderCart() {
+  const count = cart.reduce((s, c) => s + c.qty, 0);
+  $('cartCount').textContent = count;
+  $('cartCount2').textContent = count;
+  const total = `${cartTotal()} ${CURRENCY}`;
+  $('cartTotal').textContent = total;
+  $('modalTotal').textContent = total;
+  $('openCheckoutBtn').disabled = cart.length === 0;
+
+  const box = $('cartItems');
+  if (cart.length === 0) {
+    box.innerHTML = `<div class="text-center py-16 text-gray-400"><div class="text-4xl mb-2">🧸</div>${t('emptyCart')}<br><span class="text-xs">${t('emptyCartSub')}</span></div>`;
+    return;
+  }
+  box.innerHTML = cart.map(c => {
+    const p = PRODUCTS.find(x => x.id === c.id);
+    if (!p) return '';
+    return `
+    <div class="flex gap-3 border-b pb-3 items-center">
+      <img src="${p.img}" class="w-[54px] h-[54px] object-cover rounded border" alt="${pName(p)}">
+      <div class="flex-1">
+        <div class="font-medium text-[12px] leading-tight line-clamp-2 text-navy">${pName(p)}</div>
+        <div class="text-brand font-bold text-[12px] mt-1">${p.price} ${CURRENCY} × ${c.qty}</div>
+      </div>
+      <div class="flex items-center gap-1.5">
+        <button onclick="changeQty('${c.id}', -1)" class="w-6 h-6 rounded bg-gray-100 hover:bg-gray-200 text-xs">−</button>
+        <span class="text-xs font-bold w-4 text-center">${c.qty}</span>
+        <button onclick="changeQty('${c.id}', 1)" class="w-6 h-6 rounded bg-gray-100 hover:bg-gray-200 text-xs">+</button>
+      </div>
+      <button onclick="removeFromCart('${c.id}')" class="text-gray-400 hover:text-brand px-1" aria-label="${t('remove')}"><i class="fa-solid fa-trash-can text-xs"></i></button>
+    </div>`;
+  }).join('');
+}
+
+/* ================= DRAWERS & MODALS ================= */
+const drawer = $('drawer');
+const openDrawer = () => drawer.classList.remove('hidden');
+const closeDrawer = () => drawer.classList.add('hidden');
+$('mobileMenu').onclick = openDrawer;
+$('rayonsBtn').onclick = openDrawer;
+$('closeDrawer').onclick = closeDrawer;
+$('drawerBg').onclick = closeDrawer;
+document.querySelectorAll('.drawer-link').forEach(l => l.addEventListener('click', closeDrawer));
+
+const cartDrawer = $('cartDrawer');
+const openCartDrawer = () => cartDrawer.classList.remove('hidden');
+const closeCartDrawer = () => cartDrawer.classList.add('hidden');
+$('cartBtn').onclick = openCartDrawer;
+$('closeCart').onclick = closeCartDrawer;
+$('cartBg').onclick = closeCartDrawer;
+
+const checkoutModal = $('checkoutModal');
+const closeCheckout = () => checkoutModal.classList.add('hidden');
+$('openCheckoutBtn').onclick = () => {
+  if (cart.length === 0) return;
+  closeCartDrawer();
+  checkoutModal.classList.remove('hidden');
+};
+$('closeCheckoutModal').onclick = closeCheckout;
+$('checkoutModalBg').onclick = closeCheckout;
+
+$('orderForm').addEventListener('submit', (e) => {
+  e.preventDefault();
+  closeCheckout();
+  cart = [];
+  saveCart();
+  renderCart();
+  e.target.reset();
+  showToast(t('orderSuccess'));
+});
+
+/* Language buttons */
+document.querySelectorAll('[data-lang]').forEach(b => b.addEventListener('click', () => setLanguage(b.dataset.lang)));
+document.querySelectorAll('[data-lang-btn]').forEach(b => b.addEventListener('click', () => setLanguage(b.dataset.langBtn)));
+$('mobileLangBtn').addEventListener('click', () => setLanguage(currentLang === 'ar' ? 'en' : 'ar'));
+
+/* ================= SEARCH ================= */
+const sInput = $('searchInput');
+const sSuggest = $('searchSuggest');
+
+function renderSuggest(query) {
+  const q = query.trim().toLowerCase();
+  if (!q) { sSuggest.classList.add('hidden'); return; }
+  const matches = PRODUCTS.filter(p => pName(p).toLowerCase().includes(q) || p.brand.toLowerCase().includes(q)).slice(0, 6);
+  sSuggest.innerHTML = matches.length
+    ? matches.map(p => `
+      <div class="p-2.5 hover:bg-red-50 hover:text-brand cursor-pointer rounded flex items-center gap-3" onmousedown="addToCart('${p.id}')">
+        <img src="${p.img}" class="w-9 h-9 object-cover rounded" alt="">
+        <div class="flex-1"><div class="font-medium text-[12px]">${pName(p)}</div><div class="text-[11px] text-gray-400">${p.brand}</div></div>
+        <span class="text-brand font-bold text-xs">${p.price} ${CURRENCY}</span>
+      </div>`).join('')
+    : `<div class="p-3 text-gray-400 text-center">${t('noResults')}</div>`;
+  sSuggest.classList.remove('hidden');
+}
+sInput.addEventListener('input', (e) => renderSuggest(e.target.value));
+sInput.addEventListener('focus', (e) => renderSuggest(e.target.value));
+sInput.addEventListener('blur', () => setTimeout(() => sSuggest.classList.add('hidden'), 200));
+$('searchBtn').onclick = () => renderSuggest(sInput.value);
+
+/* ================= NEWSLETTER ================= */
+$('newsForm').addEventListener('submit', (e) => {
+  e.preventDefault();
+  if (!$('newsInput').value.trim()) return;
+  $('newsInput').value = '';
+  showToast(t('subscribed'));
+});
+
+/* ================= TOASTS ================= */
+function showToast(message) {
+  const wrap = $('toastContainer');
+  const el = document.createElement('div');
+  el.className = 'toast bg-navy text-white text-xs font-semibold px-4 py-3 rounded-lg shadow-xl flex items-center gap-2 pointer-events-auto';
+  el.innerHTML = `<i class="fa-solid fa-circle-check text-accentYellow"></i><span>${message}</span>`;
+  wrap.appendChild(el);
+  setTimeout(() => {
+    el.style.transition = 'opacity .3s, transform .3s';
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(8px)';
+    setTimeout(() => el.remove(), 300);
+  }, 2800);
+}
+
+/* ================= INIT ================= */
+const savedLang = localStorage.getItem('tsl_lang');
+applyLanguage(savedLang === 'en' ? 'en' : 'ar');
+updateHero();
+</script>
+</body>
+</html>
